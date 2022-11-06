@@ -1,0 +1,10 @@
+*{
+    border: none;
+}
+.search {
+    width: 100%;
+}
+#city-search{
+    width: 100%;
+    border: 2px solid;
+}
