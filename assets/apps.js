@@ -70,7 +70,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            liEl.innerText = weatherArr[i];
+            if(weatherArr[i] == weatherArr[1]){
+              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
+            }else if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+            }else{
+            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
             liContainer1.appendChild(liEl);
           }
           var date = data.list[7].dt;
@@ -95,7 +100,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            liEl.innerText = weatherArr[i];
+            if(weatherArr[i] == weatherArr[1]){
+              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
+            }else if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+            }else{
+            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
             liContainer2.appendChild(liEl);
           }
           var date = data.list[15].dt;
@@ -120,7 +130,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            liEl.innerText = weatherArr[i];
+            if(weatherArr[i] == weatherArr[1]){
+              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
+            }else if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+            }else{
+            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
             liContainer3.appendChild(liEl);
           }
           var date = data.list[23].dt;
@@ -145,7 +160,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            liEl.innerText = weatherArr[i];
+            if(weatherArr[i] == weatherArr[1]){
+              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
+            }else if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+            }else{
+            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
             liContainer4.appendChild(liEl);
           }
           var date = data.list[31].dt;
@@ -170,7 +190,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            liEl.innerText = weatherArr[i];
+            if(weatherArr[i] == weatherArr[1]){
+              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
+            }else if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+            }else{
+            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
             liContainer5.appendChild(liEl);
           }
           var date = data.list[39].dt;
@@ -195,7 +220,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            liEl.innerText = weatherArr[i];
+            if(weatherArr[i] == weatherArr[1]){
+              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
+            }else if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+            }else{
+            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
             liContainer6.appendChild(liEl);
           }
         });
