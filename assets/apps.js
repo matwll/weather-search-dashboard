@@ -1,4 +1,5 @@
-var citySearch = document.querySelector("#city-search").value;
+var savedSearch = document.querySelector('.saved-search');
+var citySearch = document.querySelector("#city-search");
 var searchBtn = document.querySelector(".search");
 var liContainer1 = document.querySelector('.list-group1');
 var liContainer2 = document.querySelector('.list-group2');
@@ -13,13 +14,18 @@ var cardTitle4 = document.querySelector('.card-body4');
 var cardTitle5 = document.querySelector('.card-body5');
 var cardTitle6 = document.querySelector('.card-body6');
 
+
 var lat;
 var lon;
 var weatherArr = [];
+var searchInfo = [];
 
 searchBtn.addEventListener("click", searchLatLon);
 
-function searchLatLon() {
+
+function searchLatLon(e) {
+  e.preventDefault;
+  citySearch = document.querySelector('#city-search').value;
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
       citySearch +
@@ -33,6 +39,15 @@ function searchLatLon() {
       //get the latitude and longitude from the city search to perform another api call with
       lat = data[0].lat;
       lon = data[0].lon;
+      //puts the information in an array to save to local storage
+      var searchInfoEl = {
+        city: citySearch,
+        lat: lat,
+        lon : lon,
+      };
+      searchInfo.push(searchInfoEl);
+      //save the info to local storage
+      localStorage.setItem('saved search', JSON.stringify(searchInfo));
     })
     .then(function(){
       fetch(
@@ -70,12 +85,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            if(weatherArr[i] == weatherArr[1]){
-              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
-            }else if(weatherArr[i] == weatherArr[2]){
+            if(weatherArr[i] == weatherArr[2]){
+             liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';
+            }else if(weatherArr[i] == weatherArr[1]){
               liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
             }else{
-            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
+            liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; }
             liContainer1.appendChild(liEl);
           }
           var date = data.list[7].dt;
@@ -100,12 +115,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            if(weatherArr[i] == weatherArr[1]){
-              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
-            }else if(weatherArr[i] == weatherArr[2]){
-              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
-            }else{
-            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
+              if(weatherArr[i] == weatherArr[2]){
+                liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';
+               }else if(weatherArr[i] == weatherArr[1]){
+                 liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+               }else{
+               liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; }
             liContainer2.appendChild(liEl);
           }
           var date = data.list[15].dt;
@@ -130,12 +145,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            if(weatherArr[i] == weatherArr[1]){
-              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
-            }else if(weatherArr[i] == weatherArr[2]){
-              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
-            }else{
-            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
+            if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';
+             }else if(weatherArr[i] == weatherArr[1]){
+               liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+             }else{
+             liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; }
             liContainer3.appendChild(liEl);
           }
           var date = data.list[23].dt;
@@ -160,12 +175,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            if(weatherArr[i] == weatherArr[1]){
-              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
-            }else if(weatherArr[i] == weatherArr[2]){
-              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
-            }else{
-            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
+            if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';
+             }else if(weatherArr[i] == weatherArr[1]){
+               liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+             }else{
+             liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; }
             liContainer4.appendChild(liEl);
           }
           var date = data.list[31].dt;
@@ -190,12 +205,12 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            if(weatherArr[i] == weatherArr[1]){
-              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
-            }else if(weatherArr[i] == weatherArr[2]){
-              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
-            }else{
-            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
+            if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';
+             }else if(weatherArr[i] == weatherArr[1]){
+               liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+             }else{
+             liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; }
             liContainer5.appendChild(liEl);
           }
           var date = data.list[39].dt;
@@ -220,14 +235,23 @@ function searchLatLon() {
           for (let i = 0; i < weatherArr.length; i++){
             var liEl = document.createElement('li');
             liEl.classList.add('list-group-item');
-            if(weatherArr[i] == weatherArr[1]){
-              liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; 
-            }else if(weatherArr[i] == weatherArr[2]){
-              liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
-            }else{
-            liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';}
+            if(weatherArr[i] == weatherArr[2]){
+              liEl.innerText = 'Humidity: ' + weatherArr[i] + '%';
+             }else if(weatherArr[i] == weatherArr[1]){
+               liEl.innerText = 'Wind: ' + weatherArr[i] + ' MPH';
+             }else{
+             liEl.innerText = 'Temp: ' + weatherArr[i] + ' Deg F'; }
             liContainer6.appendChild(liEl);
           }
         });
     });
+    var savedSearchEl = document.createElement('button');
+    savedSearchEl.classList.add('saved-btn');
+    savedSearchEl.innerText = citySearch;
+    savedSearch.appendChild(savedSearchEl);
+}
+
+
+function init(){
+  localStorage
 }

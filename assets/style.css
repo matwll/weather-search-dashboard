@@ -8,3 +8,9 @@
     width: 100%;
     border: 2px solid;
 }
+.saved-btn{
+    width: 100%;
+    margin: 15px 0;
+    height: 3rem;
+    background-color: rgb(126, 62, 88);
+}
