@@ -14,3 +14,10 @@
     height: 3rem;
     background-color: rgb(126, 62, 88);
 }
+.card-body2,
+.card-body3,
+.card-body4,
+.card-body5,
+.card-body6{
+    background-color: rgb(241, 93, 93);
+}
