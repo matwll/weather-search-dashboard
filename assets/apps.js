@@ -290,7 +290,7 @@ function searchLatLon(city) {
 //function to run on start that checks local storage for saved searches and creates saved search buttons
 function init(){
   var cityEl = JSON.parse(localStorage.getItem('saved search'));
-  if(cityEl == ''){
+  if(cityEl){
   for(var i = 0; i < cityEl.length; i++){
   city = cityEl[i].city;
   var savedSearchEl = document.createElement('button');
