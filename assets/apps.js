@@ -1,5 +1,4 @@
 var savedSearch = document.querySelector('.saved-search');
-var citySearch = document.querySelector("#city-search");
 var searchBtn = document.querySelector(".search");
 var liContainer1 = document.querySelector('.list-group1');
 var liContainer2 = document.querySelector('.list-group2');
@@ -14,21 +13,42 @@ var cardTitle4 = document.querySelector('.card-body4');
 var cardTitle5 = document.querySelector('.card-body5');
 var cardTitle6 = document.querySelector('.card-body6');
 
-
 var lat;
 var lon;
 var weatherArr = [];
 var searchInfo = [];
 
-searchBtn.addEventListener("click", searchLatLon);
+searchBtn.addEventListener("click", function(e){
+  e.preventDefault();
+  var citySearch = document.querySelector('#city-search').value;
+  searchLatLon(citySearch);
+});
+//function to remove any created information cards so they can be populated with new search info
+function clearList(){
+  var cardBody = document.querySelectorAll('.card-body');
+  var listGroup = document.querySelectorAll('.list-group');
 
+  for (var card of cardBody){
+    if(card.querySelector('.card-title')){
+    card.querySelector('.card-title').remove();
+    card.querySelector('img').remove();
+    }
+  };
+  for (var list of listGroup){
+    if(list.querySelector('.list-group-item')){
+      var listItems = list.querySelectorAll('.list-group-item');
+      for (var item of listItems){
+        item.remove();
+      }
+    }
+  }
+}
 
-function searchLatLon(e) {
-  e.preventDefault;
-  citySearch = document.querySelector('#city-search').value;
+function searchLatLon(city) {
+  clearList();
   fetch(
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
-      citySearch +
+      city +
       "&limit=5&appid=54af2aadd2e4e94c91bb5c0452485474"
   )
     .then(function (response) {
@@ -41,7 +61,7 @@ function searchLatLon(e) {
       lon = data[0].lon;
       //puts the information in an array to save to local storage
       var searchInfoEl = {
-        city: citySearch,
+        city: city,
         lat: lat,
         lon : lon,
       };
@@ -75,7 +95,7 @@ function searchLatLon(e) {
           //create elements to display the information and append to the document
           var titleEl = document.createElement('h5');
           titleEl.classList.add('card-title');
-          titleEl.innerText = (citySearch + "(" + date + ")");
+          titleEl.innerText = (city + "(" + date + ")");
           cardTitle1.appendChild(titleEl);
           var iconImg = document.createElement('img');
           iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -105,7 +125,7 @@ function searchLatLon(e) {
           //create elements to display the information and append to the document
           var titleEl = document.createElement('h5');
           titleEl.classList.add('card-title');
-          titleEl.innerText = (citySearch + "(" + date + ")");
+          titleEl.innerText = (city + "(" + date + ")");
           cardTitle2.appendChild(titleEl);
           var iconImg = document.createElement('img');
           iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -135,7 +155,7 @@ function searchLatLon(e) {
           //create elements to display the information and append to the document
           var titleEl = document.createElement('h5');
           titleEl.classList.add('card-title');
-          titleEl.innerText = (citySearch + "(" + date + ")");
+          titleEl.innerText = (city + "(" + date + ")");
           cardTitle3.appendChild(titleEl);
           var iconImg = document.createElement('img');
           iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -165,7 +185,7 @@ function searchLatLon(e) {
           //create elements to display the information and append to the document
           var titleEl = document.createElement('h5');
           titleEl.classList.add('card-title');
-          titleEl.innerText = (citySearch + "(" + date + ")");
+          titleEl.innerText = (city + "(" + date + ")");
           cardTitle4.appendChild(titleEl);
           var iconImg = document.createElement('img');
           iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -195,7 +215,7 @@ function searchLatLon(e) {
           //create elements to display the information and append to the document
           var titleEl = document.createElement('h5');
           titleEl.classList.add('card-title');
-          titleEl.innerText = (citySearch + "(" + date + ")");
+          titleEl.innerText = (city + "(" + date + ")");
           cardTitle5.appendChild(titleEl);
           var iconImg = document.createElement('img');
           iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -225,7 +245,7 @@ function searchLatLon(e) {
           //create elements to display the information and append to the document
           var titleEl = document.createElement('h5');
           titleEl.classList.add('card-title');
-          titleEl.innerText = (citySearch + "(" + date + ")");
+          titleEl.innerText = (city + "(" + date + ")");
           cardTitle6.appendChild(titleEl);
           var iconImg = document.createElement('img');
           iconImg.src = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -247,11 +267,11 @@ function searchLatLon(e) {
     });
     var savedSearchEl = document.createElement('button');
     savedSearchEl.classList.add('saved-btn');
-    savedSearchEl.innerText = citySearch;
+    savedSearchEl.innerText = city;
     savedSearch.appendChild(savedSearchEl);
-}
-
-
-function init(){
-  localStorage
+    savedSearchEl.addEventListener('click', function(e){
+      e.preventDefault();
+      var citySearch = e.target.innerText;
+      searchLatLon(citySearch);
+    })
 }
