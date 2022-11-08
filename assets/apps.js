@@ -55,6 +55,7 @@ function searchLatLon(city) {
       return response.json();
     })
     .then(function (data) {
+      console.log(searchInfo)
       console.log(data);
       //get the latitude and longitude from the city search to perform another api call with
       lat = data[0].lat;
@@ -65,9 +66,19 @@ function searchLatLon(city) {
         lat: lat,
         lon : lon,
       };
+      var cityIdentifier = false;
+      // console.log(searchInfo[0].city);
+      console.log(searchInfoEl);
+      for(var i = 0; i < searchInfo.length; i++){
+        if (searchInfo[i].city == city){
+          cityIdentifier = true;
+        }
+      }
+      if(!cityIdentifier){
       searchInfo.push(searchInfoEl);
       //save the info to local storage
       localStorage.setItem('saved search', JSON.stringify(searchInfo));
+      }
     })
     .then(function(){
       fetch(
@@ -279,7 +290,7 @@ function searchLatLon(city) {
 //function to run on start that checks local storage for saved searches and creates saved search buttons
 function init(){
   var cityEl = JSON.parse(localStorage.getItem('saved search'));
-  console.log(cityEl);
+  if(cityEl == ''){
   for(var i = 0; i < cityEl.length; i++){
   city = cityEl[i].city;
   var savedSearchEl = document.createElement('button');
@@ -291,5 +302,6 @@ function init(){
     var citySearch = e.target.innerText;
     searchLatLon(citySearch);
   })};
+}
 }
 init();
