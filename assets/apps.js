@@ -275,3 +275,21 @@ function searchLatLon(city) {
       searchLatLon(citySearch);
     })
 }
+
+//function to run on start that checks local storage for saved searches and creates saved search buttons
+function init(){
+  var cityEl = JSON.parse(localStorage.getItem('saved search'));
+  console.log(cityEl);
+  for(var i = 0; i < cityEl.length; i++){
+  city = cityEl[i].city;
+  var savedSearchEl = document.createElement('button');
+  savedSearchEl.classList.add('saved-btn');
+  savedSearchEl.innerText = city;
+  savedSearch.appendChild(savedSearchEl);
+  savedSearchEl.addEventListener('click', function(e){
+    e.preventDefault();
+    var citySearch = e.target.innerText;
+    searchLatLon(citySearch);
+  })};
+}
+init();
