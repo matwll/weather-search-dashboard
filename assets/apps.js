@@ -47,7 +47,7 @@ function clearList(){
 function searchLatLon(city) {
   clearList();
   fetch(
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
       city +
       "&limit=5&appid=54af2aadd2e4e94c91bb5c0452485474"
   )
@@ -83,7 +83,7 @@ function searchLatLon(city) {
     .then(function(){
       fetch(
         //using the lat/lon from previous call get the weather info for the next 5 days
-        "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
           lat +
           "&lon=" + lon +
           "&APPID=54af2aadd2e4e94c91bb5c0452485474&units=imperial"
