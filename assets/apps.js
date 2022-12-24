@@ -12,11 +12,24 @@ var cardTitle3 = document.querySelector('.card-body3');
 var cardTitle4 = document.querySelector('.card-body4');
 var cardTitle5 = document.querySelector('.card-body5');
 var cardTitle6 = document.querySelector('.card-body6');
+let firstSearch = document.querySelector('.search-start');
+let launchScreen = document.getElementById('launch-screen');
+let history = document.getElementById('main-history');
+let cards = document.getElementById('main-cards');
 
 var lat;
 var lon;
 var weatherArr = [];
 var searchInfo = [];
+
+firstSearch.addEventListener('click', function(e){
+  e.preventDefault();
+  var citySearch = document.querySelector('#city-search').value;
+  searchLatLon(citySearch);
+  launchScreen.classList.add('invisible');
+  history.classList.remove('invisible');
+  cards.classList.remove('invisible');
+})
 
 searchBtn.addEventListener("click", function(e){
   e.preventDefault();

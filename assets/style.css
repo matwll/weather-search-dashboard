@@ -21,3 +21,7 @@
 .card-body6{
     background-color: rgb(241, 93, 93);
 }
+
+.invisible{
+    opacity: 0;
+}

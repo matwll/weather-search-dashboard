@@ -15,7 +15,19 @@
         </div>
     </div>
 
-<div class="container-fluid">
+<div class="container-fluid d-flex justify-content-center" id="launch-screen">
+    <div class="row">
+        <h2>Search by City</h2>
+    </div>
+    <div class="row">
+        <input type="text" id="init-city-search" placeholder="Search for a City">
+    </div>
+    <div class="row">
+        <button class="search-start">Search</button> 
+    </div>  
+</div>
+
+<div class="container-fluid invisible" id="main-history">
     <div class="row">
         <div class="col-12 col-sm-3 h-100">
             <h2>Search by City</h2>
@@ -31,7 +43,7 @@
             <ul class="list-group list-group-flush list-group1">
             </ul>
 
-        <div class="container-fluid">
+        <div class="container-fluid invisible" id="main-cards">
             <div class="row">    
                 <div class="card-group"> 
                     <div class="card" style="width: 18rem;">
