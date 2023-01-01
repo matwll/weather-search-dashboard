@@ -24,7 +24,7 @@ var searchInfo = [];
 
 firstSearch.addEventListener('click', function(e){
   e.preventDefault();
-  let citySearch = document.querySelector('#city-search').value;
+  let citySearch = document.querySelector('#init-city-search').value;
   searchLatLon(citySearch);
   launchScreen.classList.add('invisible');
   history.classList.remove('invisible');
