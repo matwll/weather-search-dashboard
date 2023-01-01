@@ -24,8 +24,8 @@ var searchInfo = [];
 
 firstSearch.addEventListener('click', function(e){
   e.preventDefault();
-  var citySearch = document.querySelector('#city-search').value;
-  searchLatLon(citySearch.toLowerCase());
+  let citySearch = document.querySelector('#city-search').value;
+  searchLatLon(citySearch);
   launchScreen.classList.add('invisible');
   history.classList.remove('invisible');
   cards.classList.remove('invisible');
